@@ -1,26 +1,159 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Cinematic Noir - Tailwind v4 Theme */
+@theme {
+  /* Colors */
+  --color-surface: #121414;
+  --color-surface-dim: #121414;
+  --color-surface-bright: #37393a;
+  --color-surface-container-lowest: #0c0f0f;
+  --color-surface-container-low: #1a1c1c;
+  --color-surface-container: #1e2020;
+  --color-surface-container-high: #282a2b;
+  --color-surface-container-highest: #333535;
+  --color-on-surface: #e2e2e2;
+  --color-on-surface-variant: #bbc9cf;
+  --color-inverse-surface: #e2e2e2;
+  --color-inverse-on-surface: #2f3131;
+  --color-outline: #859399;
+  --color-outline-variant: #3c494e;
+  --color-surface-tint: #4cd6ff;
+  --color-primary: #a4e6ff;
+  --color-on-primary: #003543;
+  --color-primary-container: #00d1ff;
+  --color-on-primary-container: #00566a;
+  --color-inverse-primary: #00677f;
+  --color-secondary: #ffb59e;
+  --color-on-secondary: #5e1700;
+  --color-secondary-container: #ff571a;
+  --color-on-secondary-container: #521300;
+  --color-tertiary: #ffd59c;
+  --color-on-tertiary: #442b00;
+  --color-tertiary-container: #feb127;
+  --color-on-tertiary-container: #6b4700;
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+  --color-primary-fixed: #b7eaff;
+  --color-primary-fixed-dim: #4cd6ff;
+  --color-on-primary-fixed: #001f28;
+  --color-on-primary-fixed-variant: #004e60;
+  --color-secondary-fixed: #ffdbd0;
+  --color-secondary-fixed-dim: #ffb59e;
+  --color-on-secondary-fixed: #3a0b00;
+  --color-on-secondary-fixed-variant: #852400;
+  --color-tertiary-fixed: #ffddb1;
+  --color-tertiary-fixed-dim: #ffba49;
+  --color-on-tertiary-fixed: #291800;
+  --color-on-tertiary-fixed-variant: #624000;
+  --color-background: #121414;
+  --color-on-background: #e2e2e2;
+  --color-surface-variant: #333535;
+
+  --font-montserrat: 'Montserrat', system-ui, sans-serif;
+  
+  /* Font Family Aliases for Design System Compatibility */
+  --font-display-lg: var(--font-montserrat);
+  --font-body-lg: var(--font-montserrat);
+  --font-body-md: var(--font-montserrat);
+  --font-label-md: var(--font-montserrat);
+  --font-label-sm: var(--font-montserrat);
+  --font-headline-lg: var(--font-montserrat);
+  --font-headline-md: var(--font-montserrat);
+  --font-headline-lg-mobile: var(--font-montserrat);
+  
+  /* Typography - fontSize */
+  --text-display-lg: 64px;
+  --text-headline-lg: 40px;
+  --text-headline-lg-mobile: 32px;
+  --text-headline-md: 24px;
+  --text-body-lg: 18px;
+  --text-body-md: 16px;
+  --text-label-md: 14px;
+  --text-label-sm: 12px;
+  
+  /* Typography - lineHeight */
+  --leading-display-lg: 1.1;
+  --leading-headline-lg: 1.2;
+  --leading-headline-lg-mobile: 1.2;
+  --leading-headline-md: 1.3;
+  --leading-body-lg: 1.6;
+  --leading-body-md: 1.6;
+  --leading-label-md: 1.2;
+  --leading-label-sm: 1.2;
+  
+  /* Typography - letterSpacing */
+  --tracking-display-lg: -0.02em;
+  --tracking-label-md: 0.05em;
+  
+  /* Rounded */
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Spacing */
+  --spacing-base: 8px;
+  --spacing-xs: 4px;
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  --spacing-container-max: 1440px;
+  --spacing-gutter: 24px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom Scrollbar for horizontal category scrolling */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+.custom-scrollbar {
+  -ms-overflow-style: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom design mockup classes */
+.text-outline-rank {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+  color: transparent;
+  font-weight: 900;
+  font-size: 140px;
+  line-height: 1;
+}
+
+.cyan-glow {
+  box-shadow: 0px 0px 15px rgba(0, 209, 255, 0.4);
+}
+
+@keyframes subtle-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.animate-subtle-zoom {
+  animation: subtle-zoom 20s infinite alternate ease-in-out;
 }

@@ -202,7 +202,7 @@ erDiagram
 - **PostgreSQL Database** (Local instance or hosted service like Supabase/Neon)
 
 ### 2. Environment Setup
-Create a `.env` file in the root directory and configure the following environment variables:
+Copy `.env.example` to `.env` (`cp .env.example .env`). It already includes free demo TMDB and MyAnimeList keys, so you only need to set `DATABASE_URL` and `BETTER_AUTH_SECRET`. Google sign-in is optional. The full list of variables:
 
 ```env
 # Database Connection

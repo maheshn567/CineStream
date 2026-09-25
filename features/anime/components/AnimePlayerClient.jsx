@@ -77,7 +77,7 @@ export default function AnimePlayerClient({ id, malId, anilistId, seasonId, epis
         { name: "EmbedAPI", url: `https://player.embed-api.stream/?id=${id}&mal=${malId || ""}&anilist=${anilistId || ""}` }
       ];
 
-  const [activeServer, setActiveServer] = useState(servers[0]); // currently selected server
+  const [activeServer, setActiveServer] = useState(servers.find((s) => s.name === "Vidfast (Pro)") ?? servers[0]); // currently selected server
   const [isOpen, setIsOpen] = useState(false); // server‑selector dropdown visibility
   const [showControls, setShowControls] = useState(true); // UI controls visibility
   const [iframeError, setIframeError] = useState(false); // track iframe load errors

@@ -16,7 +16,7 @@ export default function SeriesPlayerClient({ id, seasonId, episodeId }) {
         { name: "EmbedAPI", url: `https://player.embed-api.stream/?id=${id}&s=${seasonId}&e=${episodeId}` }
     ];
 
-    const [activeServer, setActiveServer] = useState(servers[0]);
+    const [activeServer, setActiveServer] = useState(servers.find((s) => s.name === "Vidfast (Pro)") ?? servers[0]);
     const [isOpen, setIsOpen] = useState(false);
     const [showControls, setShowControls] = useState(true);
 

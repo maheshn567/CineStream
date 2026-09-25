@@ -30,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -41,3 +42,17 @@ yarn-error.log*
 next-env.d.ts
 folder.struture.md
 /lib/generated/prisma
+
+# archives & compressed files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# IDE & OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+

@@ -29,7 +29,7 @@
 
 ## 🎥 Demo Walkthrough
 
-> 75-second tour: browsing, multi-server playback, search, watchlist, and continue-watching.
+> 75-second tour: movies, series, anime, TV shows, My List, and Continue Watching.
 
 https://github.com/user-attachments/assets/29550c97-6b00-4683-bed5-d1481b24d785
 

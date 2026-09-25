@@ -7,6 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  devIndicators: false, // hide the Next.js dev-mode badge (useful for demo recordings)
   turbopack: {
     root: __dirname,
   },

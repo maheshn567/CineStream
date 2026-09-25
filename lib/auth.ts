@@ -3,7 +3,7 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { db } from "./db";
 
 export const auth = betterAuth({
-  baseURL: "http://localhost:3000", // Important! Avoid redirect_uri_mismatch [web:10]
+  baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000", // must match the deployed URL to avoid redirect_uri_mismatch
   database: prismaAdapter(db, {
     provider: "postgresql",
   }),

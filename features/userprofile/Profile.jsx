@@ -334,23 +334,23 @@ export default function Profile() {
                                         ))}
                                     </div>
                                 ) : (
-                                    <div className="w-full flex justify-center items-center py-6">
+                                    <div className="w-full flex justify-center items-center py-8 min-h-[420px]">
                                         <div 
-                                            className="w-full max-w-xl rounded-2xl p-8 text-center flex flex-col items-center gap-6 border border-white/10 shadow-[0px_0px_30px_rgba(0,0,0,0.4)]"
+                                            className="w-full max-w-2xl rounded-2xl px-8 py-12 md:px-16 md:py-16 text-center flex flex-col items-center gap-8 border border-white/10 shadow-[0px_0px_30px_rgba(0,0,0,0.4)]"
                                             style={{
                                                 background: "rgba(25, 27, 27, 0.4)",
                                                 backdropFilter: "blur(24px)",
                                                 WebkitBackdropFilter: "blur(24px)"
                                             }}
                                         >
-                                            <div className="relative w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-tr from-[#00d1ff]/15 to-[#a4e6ff]/5 border border-[#00d1ff]/20 shadow-[0_0_20px_rgba(0,209,255,0.1)]">
-                                                <span className="material-symbols-outlined text-[28px] text-[#00d1ff]">
+                                            <div className="relative w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-tr from-[#00d1ff]/15 to-[#a4e6ff]/5 border border-[#00d1ff]/20 shadow-[0_0_20px_rgba(0,209,255,0.1)]">
+                                                <span className="material-symbols-outlined text-[36px] text-[#00d1ff]">
                                                     videocam_off
                                                 </span>
                                             </div>
-                                            <div className="space-y-1">
-                                                <h3 className="font-extrabold text-lg text-white">No Streaming History</h3>
-                                                <p className="text-[#bbc9cf] text-xs leading-relaxed max-w-[360px] mx-auto">
+                                            <div className="space-y-3">
+                                                <h3 className="font-extrabold text-2xl text-white">No Streaming History</h3>
+                                                <p className="text-[#bbc9cf] text-sm leading-relaxed max-w-[440px] mx-auto">
                                                     Start playing movies or series, and they'll show up here automatically as you watch.
                                                 </p>
                                             </div>

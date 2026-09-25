@@ -21,7 +21,7 @@
 
 <div align="center">
 
-  **[🎥 Watch Demo](#-demo-walkthrough)** · **[🌐 Live Site](https://YOUR-LIVE-URL.vercel.app)** · **[✨ Features](#-what-it-does)** · **[🏗️ Architecture](#-project-architecture)** · **[⚡ Run Locally](#-getting-started)**
+  **[🎥 Watch Demo](#-demo-walkthrough)** · **[✨ Features](#-what-it-does)** · **[🏗️ Architecture](#-project-architecture)** · **[⚡ Run Locally](#-getting-started)**
 
 </div>
 
@@ -29,19 +29,9 @@
 
 ## 🎥 Demo Walkthrough
 
-> 2-minute tour: browsing, multi-server playback, search, watchlist, and continue-watching.
-
-<div align="center">
-
-[![CineStream demo video](https://cdn.loom.com/sessions/thumbnails/YOUR_LOOM_VIDEO_ID-with-play.gif)](https://www.loom.com/share/YOUR_LOOM_VIDEO_ID)
+> 75-second tour: browsing, multi-server playback, search, watchlist, and continue-watching.
 
 https://github.com/user-attachments/assets/29550c97-6b00-4683-bed5-d1481b24d785
-
-
-
-*Click to watch on Loom*
-
-</div>
 
 ---
 
@@ -226,10 +216,16 @@ BETTER_AUTH_URL="http://localhost:3000"
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
 
-# TMDB API Integration
+# TMDB API Integration (use the "API Read Access Token" from your TMDB account)
 NEXT_PUBLIC_TMDB_BASE_URL="https://api.themoviedb.org"
 NEXT_PUBLIC_ACCESS_TOKEN="your-tmdb-bearer-token"
+ACCESS_TOKEN="your-tmdb-bearer-token"   # same token, used by server-rendered anime pages
+
+# MyAnimeList (anime pages) - create a client ID at myanimelist.net > Profile > API
+CILENTID="your-mal-client-id"
+NEXT_PUBLIC_MAL_CLIENT_ID="your-mal-client-id"
 ```
+
 
 ### 3. Install Dependencies
 ```bash

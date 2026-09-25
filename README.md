@@ -35,6 +35,10 @@
 
 [![CineStream demo video](https://cdn.loom.com/sessions/thumbnails/YOUR_LOOM_VIDEO_ID-with-play.gif)](https://www.loom.com/share/YOUR_LOOM_VIDEO_ID)
 
+https://github.com/user-attachments/assets/29550c97-6b00-4683-bed5-d1481b24d785
+
+
+
 *Click to watch on Loom*
 
 </div>

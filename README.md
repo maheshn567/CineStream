@@ -1,7 +1,3 @@
-
-
-https://github.com/user-attachments/assets/8c96b2eb-ddd0-4047-9ac1-7cdd25d4d5ff
-
 # CineStream
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.2.9-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org/)
@@ -21,7 +17,7 @@ A streaming web app for movies, TV series, and anime, built with Next.js 16 (App
 
 75-second tour: movies, series, anime, TV shows, My List, and Continue Watching.
 
-https://github.com/user-attachments/assets/29550c97-6b00-4683-bed5-d1481b24d785
+https://github.com/user-attachments/assets/8c96b2eb-ddd0-4047-9ac1-7cdd25d4d5ff
 
 ---
 

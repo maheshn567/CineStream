@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
+import { getAnimeEpisodeSources, getAnimeMovieSources, DEFAULT_SOURCE_NAME } from "@/lib/playerSources";
 
 /**
  * Reusable client component for streaming Anime movies or episodes.
@@ -26,58 +27,10 @@ export default function AnimePlayerClient({ id, malId, anilistId, seasonId, epis
   // Server definitions – choose the appropriate list for movies vs episodes
   // -------------------------------------------------------------------------
   const servers = isEpisode
-    ? [
-        {
-          name: "Videasy (.to)",
-          url: `https://player.videasy.to/tv/${id}/${seasonId || 1}/${episodeId}?nextEpisode=true&autoplayNextEpisode=true&episodeSelector=true&overlay=true&color=00D1FF`,
-        },
-        {
-          name: "Vidfast (Pro)",
-          url: `https://vidfast.pro/tv/${id}/${seasonId || 1}/${episodeId}?nextEpisode=true&autoplayNextEpisode=true&episodeSelector=true&overlay=true&color=00D1FF`,
-        },
-        { 
-          name: "VidLink (Sub)", 
-          url: (anilistId || malId) 
-            ? `https://vidlink.pro/embed/anime/${anilistId || malId}/${episodeId}/sub` 
-            : `https://vidlink.pro/embed/tv/${id}/${seasonId || 1}/${episodeId}?color=00d1ff`, 
-        },
-        { 
-          name: "VidLink (Dub)", 
-          url: (anilistId || malId) 
-            ? `https://vidlink.pro/embed/anime/${anilistId || malId}/${episodeId}/dub` 
-            : `https://vidlink.pro/embed/tv/${id}/${seasonId || 1}/${episodeId}?color=00d1ff`, 
-        },
-        { name: "VidSrc (.to)", url: `https://vidsrc.to/embed/tv/${id}/${seasonId || 1}/${episodeId}` },
-        { name: "VidSrc (.me)", url: `https://vidsrc.me/embed/tv?tmdb=${id}&season=${seasonId || 1}&episode=${episodeId}` },
-        { name: "EmbedAPI", url: `https://player.embed-api.stream/?id=${id}&s=${seasonId || 1}&e=${episodeId}&mal=${malId || ""}&anilist=${anilistId || ""}` }
-      ]
-    : [
-        {
-          name: "Videasy (.to)",
-          url: `https://player.videasy.to/movie/${id}?overlay=true&color=00D1FF`,
-        },
-        {
-          name: "Vidfast (Pro)",
-          url: `https://vidfast.pro/movie/${id}?overlay=true&color=00D1FF`,
-        },
-        { 
-          name: "VidLink (Sub)", 
-          url: (anilistId || malId) 
-            ? `https://vidlink.pro/embed/anime/${anilistId || malId}/0/sub` 
-            : `https://vidlink.pro/embed/movie/${id}?color=00d1ff`, 
-        },
-        { 
-          name: "VidLink (Dub)", 
-          url: (anilistId || malId) 
-            ? `https://vidlink.pro/embed/anime/${anilistId || malId}/0/dub` 
-            : `https://vidlink.pro/embed/movie/${id}?color=00d1ff`, 
-        },
-        { name: "VidSrc (.to)", url: `https://vidsrc.to/embed/movie/${id}` },
-        { name: "VidSrc (.me)", url: `https://vidsrc.me/embed/movie?tmdb=${id}` },
-        { name: "EmbedAPI", url: `https://player.embed-api.stream/?id=${id}&mal=${malId || ""}&anilist=${anilistId || ""}` }
-      ];
+    ? getAnimeEpisodeSources({ id, malId, anilistId, seasonId, episodeId })
+    : getAnimeMovieSources({ id, malId, anilistId });
 
-  const [activeServer, setActiveServer] = useState(servers.find((s) => s.name === "Vidfast (Pro)") ?? servers[0]); // currently selected server
+  const [activeServer, setActiveServer] = useState(servers.find((s) => s.name === DEFAULT_SOURCE_NAME) ?? servers[0]); // currently selected server
   const [isOpen, setIsOpen] = useState(false); // server‑selector dropdown visibility
   const [showControls, setShowControls] = useState(true); // UI controls visibility
   const [iframeError, setIframeError] = useState(false); // track iframe load errors
@@ -124,7 +77,7 @@ export default function AnimePlayerClient({ id, malId, anilistId, seasonId, epis
         if (!title && (malId || id)) {
           const targetMalId = malId || id;
           const malRes = await fetch(`https://api.myanimelist.net/v2/anime/${targetMalId}?fields=id,title,main_picture`, {
-            headers: { 'X-MAL-CLIENT-ID': process.env.NEXT_PUBLIC_MAL_CLIENT_ID || '6114d00ca681b7a291034e32602e1e90' }
+            headers: { 'X-MAL-CLIENT-ID': process.env.NEXT_PUBLIC_MAL_CLIENT_ID || '' }
           });
           if (malRes.ok) {
             const malData = await malRes.json();

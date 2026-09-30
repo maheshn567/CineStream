@@ -7,7 +7,7 @@
 [![Better Auth](https://img.shields.io/badge/Better_Auth-1.6.20-5865F2?logo=auth0&logoColor=white)](https://www.better-auth.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-DB-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 
-A streaming web app for movies, TV series, and anime, built with Next.js 16 (App Router), React 19, Prisma, and PostgreSQL. Supports multi-server video playback with automatic fallback and per-user watch history/watchlist tracking.
+A full-stack browse-and-track app for movies, TV series, and anime, built with Next.js 16, React 19, Prisma, and PostgreSQL. Metadata comes from TMDB, AniList, and MyAnimeList, and each user gets their own watchlist and watch-progress history.
 
 **[Demo](#demo)** · **[Features](#what-it-does)** · **[Architecture](#project-architecture)** · **[Run locally](#getting-started)**
 
@@ -48,8 +48,8 @@ CineStream is a full-stack streaming app for movies, TV series, and anime.
 ### Domain-organized structure (`/features`)
 Code is split into feature packages (`features/movies`, `features/series`, `features/anime`, `features/auth`, `features/watchlist`, `features/userprofile`), each owning its own components, hooks, and data fetching.
 
-### Multi-server video playback
-A player with fallback across multiple embed sources (Videasy, Vidfast, VidLink Sub/Dub, VidSrc, EmbedAPI), a season/episode selector, and native anime sub/dub support via AniList and MyAnimeList APIs.
+### Pluggable player
+The player takes a list of embed sources and falls back to the next one on failure. It has a season/episode selector, and switches anime between sub and dub using AniList/MyAnimeList data. The source list is defined in one place (`lib/playerSources.js`).
 
 ### Authentication
 Session-based auth via Better Auth with a PostgreSQL Prisma adapter. Supports Google OAuth 2.0 and email/password. Schema includes `User`, `Session`, `Account`, and `Verification` models.
@@ -176,7 +176,7 @@ erDiagram
 - PostgreSQL (local or hosted, e.g. Supabase/Neon)
 
 ### Environment setup
-Copy `.env.example` to `.env` (`cp .env.example .env`). It already includes demo TMDB and MyAnimeList keys, so you only need to set `DATABASE_URL` and `BETTER_AUTH_SECRET`. Google sign-in is optional. Full list of variables:
+Copy `.env.example` to `.env` (`cp .env.example .env`) and fill in your own values. You need a PostgreSQL `DATABASE_URL`, a `BETTER_AUTH_SECRET`, and your own free TMDB and MyAnimeList API keys (create them at themoviedb.org and myanimelist.net). Google sign-in is optional. Full list of variables:
 
 ```env
 # Database Connection

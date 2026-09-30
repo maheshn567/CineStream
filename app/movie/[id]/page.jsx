@@ -2,6 +2,7 @@
 import { useRouter, useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
+import { getMovieSources } from "@/lib/playerSources";
 
 export default function MoviePlayer() {
     const router = useRouter();
@@ -9,16 +10,7 @@ export default function MoviePlayer() {
     const id = params.id;
     const { data: session } = authClient.useSession();
 
-    const servers = [
-        { name: "Vidfast (Pro)", url: `https://vidfast.pro/movie/${id}?overlay=true&color=00D1FF` },
-        { name: "Videasy (.to)", url: `https://player.videasy.to/movie/${id}?overlay=true&color=00D1FF` },
-        { name: "Videasy (.net)", url: `https://player.videasy.net/movie/${id}?overlay=true&color=00D1FF` },
-        { name: "VidSrc (.to)", url: `https://vidsrc.to/embed/movie/${id}` },
-        { name: "VidSrc (.me)", url: `https://vidsrc.me/embed/movie?tmdb=${id}` },
-        { name: "VidLink (Sub)", url: `https://vidlink.pro/embed/movie/${id}?color=00D1FF` },
-        { name: "VidLink (Dub)", url: `https://vidlink.pro/embed/movie/${id}?color=00D1FF` },
-        { name: "EmbedAPI", url: `https://player.embed-api.stream/?id=${id}` }
-    ];
+    const servers = getMovieSources(id);
 
     const [activeServer, setActiveServer] = useState(servers[0]);
     const [isOpen, setIsOpen] = useState(false);

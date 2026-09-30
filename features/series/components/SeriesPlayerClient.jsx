@@ -2,21 +2,15 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
+import { getSeriesSources, DEFAULT_SOURCE_NAME } from "@/lib/playerSources";
 
 export default function SeriesPlayerClient({ id, seasonId, episodeId }) {
     const router = useRouter();
     const { data: session } = authClient.useSession();
 
-    const servers = [
-        { name: "Videasy (.to)", url: `https://player.videasy.to/tv/${id}/${seasonId}/${episodeId}?nextEpisode=true&autoplayNextEpisode=true&episodeSelector=true&overlay=true&color=00D1FF` },
-        { name: "Vidfast (Pro)", url: `https://vidfast.pro/tv/${id}/${seasonId}/${episodeId}?nextEpisode=true&autoplayNextEpisode=true&episodeSelector=true&overlay=true&color=00D1FF` },
-        { name: "Videasy (.net)", url: `https://player.videasy.net/tv/${id}/${seasonId}/${episodeId}?nextEpisode=true&autoplayNextEpisode=true&episodeSelector=true&overlay=true&color=00D1FF` },
-        { name: "VidSrc (.to)", url: `https://vidsrc.to/embed/tv/${id}/${seasonId}/${episodeId}` },
-        { name: "VidSrc (.me)", url: `https://vidsrc.me/embed/tv?tmdb=${id}&season=${seasonId}&episode=${episodeId}` },
-        { name: "EmbedAPI", url: `https://player.embed-api.stream/?id=${id}&s=${seasonId}&e=${episodeId}` }
-    ];
+    const servers = getSeriesSources({ id, seasonId, episodeId });
 
-    const [activeServer, setActiveServer] = useState(servers.find((s) => s.name === "Vidfast (Pro)") ?? servers[0]);
+    const [activeServer, setActiveServer] = useState(servers.find((s) => s.name === DEFAULT_SOURCE_NAME) ?? servers[0]);
     const [isOpen, setIsOpen] = useState(false);
     const [showControls, setShowControls] = useState(true);
 

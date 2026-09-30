@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { createPortal } from "react-dom";
 import CinematicTrailerPlayer from "@/features/movies/components/CinematicTrailerPlayer";
+import { getAnimeDetailsPreviewUrl } from "@/lib/playerSources";
 
 
 export default function AnimeDetailsPage({ data }) {
@@ -352,7 +353,7 @@ export default function AnimeDetailsPage({ data }) {
                             <div className="relative w-full h-full bg-black">
                                 <iframe 
                                     className="w-full h-full border-0"
-                                    src={`https://vidsrc.to/embed/tv/${data.tmdb_id}/${selectedSeason}/${selectedEpisode}?color=00d1ff`}
+                                    src={getAnimeDetailsPreviewUrl({ tmdbId: data.tmdb_id, season: selectedSeason, episode: selectedEpisode })}
                                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
                                     allowFullScreen
                                 ></iframe>
